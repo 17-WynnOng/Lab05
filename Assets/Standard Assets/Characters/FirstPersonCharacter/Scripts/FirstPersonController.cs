@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -43,10 +41,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
-        private int CoinCount;
-        public Text CoinText;
-        public int CoinAmount;
 
         // Use this for initialization
         private void Start()
@@ -88,24 +82,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
-
-        public void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.tag == "Coin")
-            {
-                Destroy(other.gameObject);
-                CoinCount += CoinAmount;
-                CoinText.text = "Score:" + CoinCount;
-            }
-
-            if (other.gameObject.tag == "Water")
-
-            {
-                UnityStandardAssets.Characters.FirstPerson.MouseLook.m_cursorIsLocked = false;
-                SceneManager.LoadScene("GameLose");
-            }
-        }
-
 
         private void PlayLandingSound()
         {
