@@ -27,7 +27,7 @@ public class PlayerScript : MonoBehaviour
     {
         TimerCount -= Time.deltaTime;   
 
-        TimerText.text = "Time Left: " + TimerCount;
+        TimerText.text = "Time Left: " + TimerCount.ToString("F2");
 
         if (TimerCount <= 0)
         {
